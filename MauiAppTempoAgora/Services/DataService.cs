@@ -26,14 +26,37 @@ namespace MauiAppTempoAgora.Services
                 {
                     string json = response.Content.ReadAsStringAsync().Result;
 
+                    Debug.WriteLine("----------------");
+                    Debug.WriteLine(json);
+                    Debug.WriteLine("----------------");
+
                     var rascunho = JSObject.Parse(json);
+
+                    Debug.WriteLine("----------------");
+                    Debug.WriteLine(rascunho);
+                    Debug.WriteLine("----------------");
 
                     DateTime time = new DateTime(1970, 1, 1, 0, 0, 0, 0);
                     DateTime sunrise = time.AddSeconds((double)rascunho["sys"]["sunrise"]).ToLocalTime();
                     DateTime sunset = time.AddSeconds((double)rascunho["sys"]["sunset"]).ToLocalTime();
-                }
-            }
 
-        }
-    }
-}
+                    tempo = new()
+                    {
+                        Humidity = (string)rascunho["main"]["humidity"],
+                        Temperature = (string)rascunho["main"]["temp"],
+                        Title = (string)rascunho["name"],
+                        Visibility = (string)rascunho["visibility"],
+                        Wind = (string)rascunho["wind"]["speed"],
+                        Sunrise = sunrise.ToString(),
+                        Sunset = sunset.ToString(),
+                        Weather = (string)rascunho["weather"][0]["main"],
+                        WeatherDescription = (string)rascunho["weather"][0]["description"],
+                    };
+                }//Fecha if
+            }//Fecha using
+
+            return tempo;
+
+        }//Fecha método
+    }//Fecha classe
+}//Fecha namespace
