@@ -65,7 +65,19 @@ namespace MauiAppTempoAgora
 
             if (placemark != null)
             {
+                cidade = placemark.Locality;
 
+                return
+                    $"AdminArea: {placemark.AdminArea}\n" +
+                    $"CountryCode: {placemark.CountryCode}\n" +
+                    $"CountryName: {placemark.CountryName}\n" +
+                    $"FeatureName: {placemark.FeatureName}\n" +
+                    $"Locality: {placemark.Locality}\n" +
+                    $"PostalCode: {placemark.PostalCode}\n" +
+                    $"SubAdminArea: {placemark.SubAdminArea}\n" +
+                    $"SubLocality: {placemark.SubLocality}\n" +
+                    $"SubThoroughfare: {placemark.SubThoroughfare}\n" +
+                    $"Thoroughfare: {placemark.Thoroughfare}\n";
             }
         }
 
