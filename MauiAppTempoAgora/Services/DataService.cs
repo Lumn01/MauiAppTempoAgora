@@ -30,7 +30,7 @@ namespace MauiAppTempoAgora.Services
                     Debug.WriteLine(json);
                     Debug.WriteLine("----------------");
 
-                    var rascunho = JSObject.Parse(json);
+                    var rascunho = JObject.Parse(json);
 
                     Debug.WriteLine("----------------");
                     Debug.WriteLine(rascunho);
